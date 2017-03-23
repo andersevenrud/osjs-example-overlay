@@ -1,22 +1,21 @@
 # Example OS.js overlay
 
-This is an example overlay for OS.js.
 
-This is used to add client and server modules, etc.
+This is an example "overlay" for OS.js (**for the future 2.0.0-89 release.**).
 
-**This is intended for the future 2.0.0-89 release. Everything except packges is working.**
+
+The purpose of overlays like these is to completely separate your OS.js instance and any
+modules, packages or client files you want to add.
+
 
 ## Configuration
 
-If you clone this into your OS.js installation as `overlays/example`, place this in your custom json configuration file:
+If you clone this into your OS.js installation as `overlays/example`, place this in your custom json configuration file (ex `800-example-overlay.json`):
 ```json
 {
   "server": {
     "overlays": {
       "example": {
-        "packages": [
-          "overlays/example/packages"
-        ],
         "modules": [
           "overlays/example/server"
         ]
@@ -47,7 +46,7 @@ If you clone this into your OS.js installation as `overlays/example`, place this
 }
 ```
 
-This way you can for example define custom modules:
+This way you can for example define custom modules (ex `801-my-settings.json`):
 
 ```json
 {
