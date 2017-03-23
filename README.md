@@ -1,7 +1,7 @@
 # Example OS.js overlay
 
 
-This is an example "overlay" for OS.js (**for the future 2.0.0-89 release.**).
+This is an example "overlay" for OS.js (**>= v2.0.0-89**).
 
 
 The purpose of overlays like these is to completely separate your OS.js instance and any
@@ -66,6 +66,7 @@ This way you can for example define custom modules (ex `801-my-settings.json`):
 }
 ```
 
+**Note: You can use absolute paths as well**
 
 ## Links
 
