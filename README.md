@@ -25,6 +25,9 @@ If you clone this into your OS.js installation as `overlays/example`, place this
   "build": {
     "overlays": {
       "example": {
+        "themes": [
+          "overlays/example/client/themes"
+        ],
         "packages": [
           "overlays/example/packages"
         ],
