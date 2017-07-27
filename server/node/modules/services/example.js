@@ -27,20 +27,11 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-/*eslint strict:["error", "global"]*/
-'use strict';
 
-/*
- * Unloads the service upon server stop
- */
 module.exports.destroy = function() {
   return Promise.resolve();
 };
 
-/*
- * Registers the service upon server start
- */
-module.exports.register = function(env, config, servers) {
+module.exports.register = function(env, config, wrapper) {
   return Promise.resolve();
 };
-

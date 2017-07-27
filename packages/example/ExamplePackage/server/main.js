@@ -13,7 +13,7 @@
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
@@ -27,12 +27,29 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-/*eslint strict:["error", "global"]*/
-'use strict';
 
-/*
- * Registers the Session storage module
- */
-module.exports.register = function(session, conf, env, opts) {
-  return Promise.resolve({});
-};
+/*eslint valid-jsdoc: "off"*/
+(function() {
+  'use strict';
+
+  /*
+   * See http://os.js.org/doc/tutorials/application-with-server-api.html
+   */
+
+  /**
+   * Registers your package when OS.js server starts.
+   */
+  module.exports.register = function(env, metadata, servers) {
+  };
+
+  /**
+   * Registers your Application API methods
+   */
+  module.exports.api = {
+    test: function(env, http, resolve, reject, args) {
+      resolve('This is a response from your application');
+    }
+  };
+
+})();
+

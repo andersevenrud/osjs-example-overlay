@@ -27,43 +27,11 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-/*eslint strict:["error", "global"]*/
-'use strict';
 
-module.exports.setSettings = function(http, username, data) {
-  return new Promise((resolve) => {
-    resolve(true);
-  });
-};
+const Storage = require('modules/storage.js');
 
-module.exports.getSettings = function(http, username) {
-  return new Promise((resolve) => {
-    resolve({});
-  });
-};
+class ExampleStorage extends Storage {
 
-module.exports.getGroups = function(http, username) {
-  return new Promise((resolve) => {
-    resolve(['admin']);
-  });
-};
+}
 
-module.exports.getBlacklist = function(http, username) {
-  return new Promise((resolve) => {
-    resolve([]);
-  });
-};
-
-module.exports.setBlacklist = function(http, username, list) {
-  return new Promise((resolve) => {
-    resolve(true);
-  });
-};
-
-module.exports.register = function(config) {
-  return Promise.resolve();
-};
-
-module.exports.destroy = function() {
-  return Promise.resolve();
-};
+module.exports = new ExampleStorage();

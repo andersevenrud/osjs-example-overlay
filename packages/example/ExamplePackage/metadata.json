@@ -1,0 +1,11 @@
+{
+  "className": "ApplicationExamplePackage",
+  "name": "ExamplePackage",
+  "mime": null,
+  "icon": "categories/applications-system.png",
+  "main": {
+    "node": "server/main.js",
+    "php": "server/main.php"
+  },
+  "preload": ["main.js", "main.css"]
+}

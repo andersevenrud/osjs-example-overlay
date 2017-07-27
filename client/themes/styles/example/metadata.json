@@ -1,0 +1,10 @@
+{
+  "name": "example",
+  "title": "Example",
+  "style": {
+    "window": {
+      "margin": "2.5em",
+      "border": "0.41666em"
+    }
+  }
+}

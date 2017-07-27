@@ -1,0 +1,36 @@
+{
+  "build": {
+    "overlays": {
+      "example": {
+        "static": [
+          "%OVERLAY%/dist/example.js",
+          "%OVERLAY%/dist/example.css"
+        ],
+        "includes": {
+          "scripts": [
+            "example.js"
+          ],
+          "styles": [
+            "example.css"
+          ]
+        },
+        "webpack": {
+          "resolve": {
+            "modules": [
+              "%OVERLAY%/client/javascript"
+            ]
+          },
+          "entry": {
+            "osjs": [
+              "%OVERLAY%/client/stylesheets/example.css"
+            ],
+            "locales": [
+              "%OVERLAY%/client/locales/example.js"
+            ]
+          }
+        }
+      }
+    }
+  }
+
+}

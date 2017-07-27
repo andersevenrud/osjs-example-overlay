@@ -27,49 +27,49 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
+const Application = OSjs.require('core/application');
+const Window = OSjs.require('core/window');
 
-/*eslint valid-jsdoc: "off"*/
-(function(Application, Window, Utils, API, VFS, GUI) {
-  'use strict';
+class ApplicationExamplePackageWindow extends Window {
 
-  /////////////////////////////////////////////////////////////////////////////
-  // APPLICATION
-  /////////////////////////////////////////////////////////////////////////////
-
-  function runApplication(app) {
-    app._on('init', function(settings, metadata, scheme) {
-      // Create Window when application has been initialized
-      var win = new Window('ExampleWindow', {
-        icon: metadata.icon,
-        title: metadata.name,
-        width: 400,
-        height: 200
-      }, app, scheme);
-
-      win._on('init', function(root, scheme) {
-        // Window was inited. Render our scheme file fragment into window
-        this._render(this._name);
-      });
-
-      win._on('inited', function(scheme) {
-        // Window inited and rendered
-
-        // Example on how to call `api.js` methods
-        app._api('test', {}, function(err, res) {
-          console.log('Result from your server API method', err, res);
-        });
-      });
-
-      app._addWindow(win);
-    });
+  constructor(app, metadata) {
+    super('ApplicationExamplePackageWindow', {
+      icon: metadata.icon,
+      title: metadata.name,
+      width: 400,
+      height: 200
+    }, app);
   }
 
-  /////////////////////////////////////////////////////////////////////////////
-  // EXPORTS
-  /////////////////////////////////////////////////////////////////////////////
+  init(wmRef, app) {
+    const root = super.init(...arguments);
 
-  OSjs.Applications.ApplicationExample = {
-    run: runApplication
+    // Render our Scheme file fragment into this Window
+    this._render('ExamplePackageWindow', require('osjs-scheme-loader!./scheme.html'));
+
+    // Put your GUI code here (or make a new prototype function and call it):
+
+    return root;
+  }
+
+}
+
+class ApplicationExamplePackage extends Application {
+
+  constructor(args, metadata) {
+    super('ApplicationExamplePackage', args, metadata);
+  }
+
+  init(settings, metadata) {
+    super.init(...arguments);
+
+    this._addWindow(new ApplicationExamplePackageWindow(this, metadata));
+
+    // Example on how to call `api.js` methods
+    this._api('test', {}).then((res) => {
+      console.log('Result from your server API method', res);
+    });
   };
+}
 
-})(OSjs.Core.Application, OSjs.Core.Window, OSjs.Utils, OSjs.API, OSjs.VFS, OSjs.GUI);
+OSjs.Applications.ApplicationExamplePackage = ApplicationExamplePackage;

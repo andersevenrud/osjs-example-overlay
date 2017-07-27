@@ -27,22 +27,17 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-/*eslint strict:["error", "global"]*/
-'use strict';
 
-module.exports.register = function(servers) {
-  /* Here you can hook into httpServer, websocketServer and proxyServer */
+module.exports = function(app, wrapper) {
+  wrapper.get('/example', (http, req, res, next) => {
+    res.send('Hello World!');
+  });
+
+  wrapper.use((http, req, res, next) => {
+    return http.next();
+  });
+
+  wrapper.use((http, err, req, res, next) => {
+    return http.next();
+  });
 };
-
-/*
- * When a HTTP request is performed
- *
- * See https://os-js.org/doc/server/global.html#ServerRequest for the `http`
- * object documentation
- */
-module.exports.request = function(http, next) {
-  next(); // Allow next middleware to run
-  // next(true); // Or to abort with error
-  // Or simply don't call the function to stop here
-};
-

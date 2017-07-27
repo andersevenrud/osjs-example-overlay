@@ -42,29 +42,19 @@
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon-precomposed" href="favicon.png" />
 
-    <!-- Styles -->
-    <link type="text/css" rel="stylesheet" href="themes/fonts.min.css" />
-%STYLES%
-
-    <!-- Scripts -->
-    <script type="text/javascript" charset="utf-8" src="settings.js"></script>
-%SCRIPTS%
+<% htmlWebpackPlugin.options.osjs.styles.forEach(function(path) { %>
+    <link type="text/css" rel="stylesheet" href="<%= path %>" />
+<% }); %>
 
   </head>
   <body>
-%SPLASH%
 
-%LOGIN%
+<%= require('./splash.html') %>
+<%= require('./login.html') %>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        OSjs.Bootstrap.run({
-        });
-      });
-      document.addEventListener('unload', function() {
-        OSjs.Bootstrap.stop();
-      });
-    </script>
+<% htmlWebpackPlugin.options.osjs.scripts.forEach(function(path) { %>
+    <script charset="utf-8" src="<%= path %>"></script>
+<% }); %>
 
   </body>
 </html>
