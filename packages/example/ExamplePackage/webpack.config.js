@@ -5,6 +5,6 @@ module.exports = new Promise((resolve, reject) => {
   const metadataFile = path.join(__dirname, 'metadata.json');
 
   osjs.webpack.createPackageConfiguration(metadataFile).then((result) => {
-    resolve(result.webpack);
+    resolve(result.config);
   }).catch(reject);
 });
