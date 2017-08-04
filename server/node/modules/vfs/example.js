@@ -28,15 +28,15 @@
  * @licence Simplified BSD License
  */
 
-function createReadStream(http, path) {
+function createReadStream(filename, path) {
   return Promise.resolve(null);
 }
 
-function createWriteStream(http, path) {
+function createWriteStream(,http path) {
   return Promise.resolve(null);
 }
 
-module.exports.request = function(http, method, args) {
+module.exports.request = function(user, method, args) {
   return Promise.reject(new Error('No such VFS method'));
 };
 
