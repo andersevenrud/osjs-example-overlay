@@ -28,11 +28,11 @@
  * @licence Simplified BSD License
  */
 
-function createReadStream(filename, path) {
+function createReadStream(filename, options) {
   return Promise.resolve(null);
 }
 
-function createWriteStream(,http path) {
+function createWriteStream(filename, options) {
   return Promise.resolve(null);
 }
 
